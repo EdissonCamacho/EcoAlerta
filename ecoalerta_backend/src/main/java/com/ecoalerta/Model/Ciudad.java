@@ -1,5 +1,8 @@
 package com.ecoalerta.Model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
@@ -16,6 +19,7 @@ import java.util.Set;
 public class Ciudad {
     @Id
     @Column(name = "Id_ciudad", nullable = false)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
 
     @Size(max = 50)
@@ -23,11 +27,10 @@ public class Ciudad {
     private String nombreCiudad;
 
     @NotNull
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @ManyToOne()
     @JoinColumn(name = "Id_departamento_FK", nullable = false)
     private Departamento idDepartamentoFk;
 
-    @OneToMany(mappedBy = "idCiudadFk")
-    private Set<Usuario> usuarios = new LinkedHashSet<>();
+
 
 }
