@@ -14,6 +14,7 @@ import java.util.Set;
 @Table(name = "departamento", schema = "ecoalerta")
 public class Departamento {
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "Id_departamento", nullable = false)
     private Integer id;
 
@@ -21,7 +22,7 @@ public class Departamento {
     @Column(name = "Nombre_departamento", length = 50)
     private String nombreDepartamento;
 
-    @OneToMany(mappedBy = "idDepartamentoFk")
-    private Set<Ciudad> ciudads = new LinkedHashSet<>();
+    //@OneToMany(mappedBy = "idDepartamentoFk")
+    //private Set<Ciudad> ciudads = new LinkedHashSet<>();
 
 }
