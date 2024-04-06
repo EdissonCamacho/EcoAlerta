@@ -16,10 +16,11 @@ import java.util.Set;
 public class Articulo {
     @Id
     @Column(name = "Id_articulo", nullable = false)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
 
     @NotNull
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @ManyToOne()
     @JoinColumn(name = "Id_seccion_FK", nullable = false)
     private Seccion idSeccionFk;
 
@@ -31,16 +32,6 @@ public class Articulo {
     @Column(name = "Informacion_articulo", length = 45)
     private String informacionArticulo;
 
-    @OneToMany(mappedBy = "idArticuloFk")
-    private Set<ArticuloUsuario> articuloUsuarios = new LinkedHashSet<>();
 
-    @OneToMany(mappedBy = "idArticuloFk")
-    private Set<Comentarioarticulo> comentarioarticulos = new LinkedHashSet<>();
-
-    @OneToMany(mappedBy = "idArticuloFk")
-    private Set<Imagenarticulo> imagenarticulos = new LinkedHashSet<>();
-
-    @OneToMany(mappedBy = "idArticuloFk")
-    private Set<Like> likes = new LinkedHashSet<>();
 
 }
