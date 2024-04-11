@@ -21,7 +21,5 @@ public class Comentario {
     @Column(name = "comentario", length = 50)
     private String comentario;
 
-    @OneToMany(mappedBy = "idComentarioFk")
-    private Set<Comentarioarticulo> comentarioarticulos = new LinkedHashSet<>();
 
 }

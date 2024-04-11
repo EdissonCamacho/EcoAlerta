@@ -16,13 +16,13 @@ import java.util.Set;
 public class Seccion {
     @Id
     @Column(name = "Id_seccion", nullable = false)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
 
     @Size(max = 50)
     @Column(name = "Nombre_seccion", length = 50)
     private String nombreSeccion;
 
-    @OneToMany(mappedBy = "idSeccionFk")
-    private Set<Articulo> articulos = new LinkedHashSet<>();
+
 
 }
