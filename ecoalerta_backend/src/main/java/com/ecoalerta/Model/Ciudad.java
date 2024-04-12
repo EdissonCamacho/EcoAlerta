@@ -19,7 +19,7 @@ import java.util.Set;
 public class Ciudad {
     @Id
     @Column(name = "Id_ciudad", nullable = false)
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
     @Size(max = 50)

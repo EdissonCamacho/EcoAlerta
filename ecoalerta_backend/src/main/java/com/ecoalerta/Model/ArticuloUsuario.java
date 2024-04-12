@@ -12,6 +12,7 @@ import lombok.Setter;
 public class ArticuloUsuario {
     @Id
     @Column(name = "Id_Articulo_Usuario", nullable = false)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
     @NotNull

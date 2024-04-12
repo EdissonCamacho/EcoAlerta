@@ -16,7 +16,7 @@ public class Rol {
 
     @Id
     @Column(name = "Id_rol", nullable = false)
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
     @Size(max = 45)

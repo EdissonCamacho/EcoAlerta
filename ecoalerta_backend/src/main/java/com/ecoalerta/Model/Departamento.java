@@ -14,7 +14,7 @@ import java.util.Set;
 @Table(name = "departamento", schema = "ecoalerta")
 public class Departamento {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "Id_departamento", nullable = false)
     private Integer id;
 

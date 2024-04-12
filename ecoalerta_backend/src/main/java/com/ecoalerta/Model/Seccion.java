@@ -16,7 +16,7 @@ import java.util.Set;
 public class Seccion {
     @Id
     @Column(name = "Id_seccion", nullable = false)
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
     @Size(max = 50)

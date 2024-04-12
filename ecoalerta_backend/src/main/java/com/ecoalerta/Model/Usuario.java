@@ -16,6 +16,7 @@ import java.util.Set;
 public class Usuario {
     @Id
     @Column(name = "Id_usuario", nullable = false)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
     @Size(max = 45)
