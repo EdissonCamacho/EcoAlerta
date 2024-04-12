@@ -12,6 +12,7 @@ import lombok.Setter;
 public class Like {
     @Id
     @Column(name = "Id_like", nullable = false)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
     @NotNull

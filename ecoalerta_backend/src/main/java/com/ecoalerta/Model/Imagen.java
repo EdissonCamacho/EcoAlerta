@@ -15,6 +15,7 @@ import java.util.Set;
 public class Imagen {
     @Id
     @Column(name = "Id_imagen", nullable = false)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
     @Size(max = 50)

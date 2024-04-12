@@ -16,7 +16,7 @@ import java.util.Set;
 public class Articulo {
     @Id
     @Column(name = "Id_articulo", nullable = false)
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
     @NotNull

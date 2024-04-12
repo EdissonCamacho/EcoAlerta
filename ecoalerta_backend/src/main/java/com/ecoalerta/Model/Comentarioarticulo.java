@@ -12,6 +12,7 @@ import lombok.Setter;
 public class Comentarioarticulo {
     @Id
     @Column(name = "Id_comentario_articulo", nullable = false)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
     @NotNull

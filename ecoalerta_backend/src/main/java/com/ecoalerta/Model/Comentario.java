@@ -15,6 +15,7 @@ import java.util.Set;
 public class Comentario {
     @Id
     @Column(name = "Id_comentario", nullable = false)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
     @Size(max = 50)

@@ -12,6 +12,7 @@ import lombok.Setter;
 public class RolUsuario {
     @Id
     @Column(name = "Id_rol_usuario", nullable = false)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
     @NotNull
