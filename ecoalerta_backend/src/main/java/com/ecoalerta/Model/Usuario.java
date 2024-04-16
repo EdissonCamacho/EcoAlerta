@@ -44,20 +44,10 @@ public class Usuario {
     private String password;
 
     @NotNull
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @ManyToOne()
     @JoinColumn(name = "Id_ciudad_FK", nullable = false)
     private Ciudad idCiudadFk;
 
-    @OneToMany(mappedBy = "idUsuarioFk")
-    private Set<ArticuloUsuario> articuloUsuarios = new LinkedHashSet<>();
 
-    @OneToMany(mappedBy = "idUsuarioFk")
-    private Set<Comentarioarticulo> comentarioarticulos = new LinkedHashSet<>();
-
-    @OneToMany(mappedBy = "idUsuarioFk")
-    private Set<Like> likes = new LinkedHashSet<>();
-
-    @OneToMany(mappedBy = "idUsuarioFk")
-    private Set<RolUsuario> rolUsuarios = new LinkedHashSet<>();
 
 }
