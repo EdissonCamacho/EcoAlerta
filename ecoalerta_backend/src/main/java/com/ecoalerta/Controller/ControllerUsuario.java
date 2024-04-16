@@ -44,9 +44,15 @@ public class ControllerUsuario {
     }
 
     @DeleteMapping("deleteById/{idUsuario}")
-    public Iterable<Usuario> delete(@PathVariable Integer idUsuario){
-        serviceUsuario.deleteById(idUsuario);
-        return serviceUsuario.findAll();
+    public ResponseEntity<Object> delete(@PathVariable Integer idUsuario){
+        try {
+            serviceUsuario.deleteById(idUsuario);
+            return ResponseEntity.status(200).body(serviceUsuario.findAll());
+        }catch (Exception e){
+          return   ResponseEntity.status(404).body("No se pudo eliminar "+e.toString());
+        }
+
+
     }
     @GetMapping("getById/{idUsuario}")
     public Optional<Usuario> getById(@PathVariable Integer idUsuario){
