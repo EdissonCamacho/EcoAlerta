@@ -16,12 +16,12 @@ public class Like {
     private Integer id;
 
     @NotNull
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @ManyToOne()
     @JoinColumn(name = "Id_articulo_FK", nullable = false)
     private Articulo idArticuloFk;
 
     @NotNull
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @ManyToOne()
     @JoinColumn(name = "Id_usuario_FK", nullable = false)
     private Usuario idUsuarioFk;
 

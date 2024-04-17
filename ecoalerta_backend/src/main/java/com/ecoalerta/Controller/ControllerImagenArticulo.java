@@ -52,6 +52,16 @@ public class ControllerImagenArticulo {
         return imagenArticulo.insertar(idImagen,idArticulo,servImagen,serviceArticulo,serviceImagenArticulo);
 
     }
+    @DeleteMapping("deleteById/{idImagenArticulo}")
+    public ResponseEntity<Object> deleteById(@PathVariable Integer idImagenArticulo){
+        try {
+            serviceImagenArticulo.deleteById(idImagenArticulo);
+           return ResponseEntity.status(200).body(serviceImagenArticulo.findAll());
+        }catch (Exception e){
+           return ResponseEntity.status(404).body("No se pudo eliminar "+e);
+        }
+
+    }
 
 
 }
