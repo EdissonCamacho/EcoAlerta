@@ -26,7 +26,5 @@ public class Imagen {
     @Column(name = "Url", length = 100)
     private String url;
 
-    @OneToMany(mappedBy = "idImagenFk")
-    private Set<Imagenarticulo> imagenarticulos = new LinkedHashSet<>();
 
 }

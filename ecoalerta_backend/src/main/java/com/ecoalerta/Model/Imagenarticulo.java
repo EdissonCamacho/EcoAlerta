@@ -16,12 +16,12 @@ public class Imagenarticulo {
     private Integer id;
 
     @NotNull
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @ManyToOne()
     @JoinColumn(name = "Id_articulo_FK", nullable = false)
     private Articulo idArticuloFk;
 
     @NotNull
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @ManyToOne()
     @JoinColumn(name = "Id_imagen_FK", nullable = false)
     private Imagen idImagenFk;
 
