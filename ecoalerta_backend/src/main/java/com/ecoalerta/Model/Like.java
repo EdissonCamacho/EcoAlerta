@@ -25,4 +25,5 @@ public class Like {
     @JoinColumn(name = "Id_usuario_FK", nullable = false)
     private Usuario idUsuarioFk;
 
+
 }
