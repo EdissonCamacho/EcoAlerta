@@ -1,1 +1,40 @@
-<p>carrusel works!</p>
+<div class="relative">
+    <div class="relative overflow-hidden w-full min-h-96 bg-white rounded-lg">
+      <div class="absolute top-0 bottom-0 start-0 flex flex-nowrap transition-transform duration-700 opacity-0">
+        <div class="flex justify-center h-full bg-gray-100 p-6">
+          <img src="assets/images/paramo1.jpg" alt="Slide 1" class="object-cover h-full">
+        </div>
+        <div class="flex justify-center h-full bg-gray-200 p-6">
+          <img src="assets/images/paramo2.jpeg" alt="Slide 2" class="object-cover h-full">
+        </div>
+        <div class="flex justify-center h-full bg-gray-300 p-6">
+          <img src="assets/images/paramo3.jpeg" alt="Slide 3" class="object-cover h-full">
+        </div>
+      </div>
+    </div>
+  
+    <!-- Botones de navegación -->
+    <button type="button" class="absolute inset-y-0 start-0 inline-flex justify-center items-center w-[46px] h-full text-gray-800 hover:bg-gray-800/10 rounded-s-lg">
+      <span class="text-2xl" aria-hidden="true">
+        <svg class="flex-shrink-0 w-6 h-6" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="m15 18-6-6 6-6"></path>
+        </svg>
+      </span>
+      <span class="sr-only">Anterior</span>
+    </button>
+    <button type="button" class="absolute inset-y-0 end-0 inline-flex justify-center items-center w-[46px] h-full text-gray-800 hover:bg-gray-800/10 rounded-e-lg">
+      <span class="sr-only">Siguiente</span>
+      <span class="text-2xl" aria-hidden="true">
+        <svg class="flex-shrink-0 w-6 h-6" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="m9 18 6-6-6-6"></path>
+        </svg>
+      </span>
+    </button>
+  
+    <!-- Paginación del carrusel -->
+    <div class="flex justify-center absolute bottom-3 start-0 end-0 space-x-2">
+      <span class="bg-green-700 size-3 border border-gray-400 rounded-full cursor-pointer"></span>
+      <span class="bg-green-700 size-3 border border-gray-400 rounded-full cursor-pointer"></span>
+      <span class="bg-green-700 size-3 border border-gray-400 rounded-full cursor-pointer"></span>
+    </div>
+  </div>
