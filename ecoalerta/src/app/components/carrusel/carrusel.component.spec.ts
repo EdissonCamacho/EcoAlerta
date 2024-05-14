@@ -6,15 +6,18 @@ describe('CarruselComponent', () => {
   let component: CarruselComponent;
   let fixture: ComponentFixture<CarruselComponent>;
 
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
+  beforeEach(
+    () => {
+     TestBed.configureTestingModule({
       imports: [CarruselComponent]
+      
     })
     .compileComponents();
     
     fixture = TestBed.createComponent(CarruselComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
+    console.log("hola");
   });
 
   it('should create', () => {
