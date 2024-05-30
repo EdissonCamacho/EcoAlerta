@@ -40,7 +40,10 @@ export class NavComponent implements OnInit {
       }
     );
   }
- 
+  concat(str:string){
+    let con:string=str.replace(/\s/g, '');
+   return con.toLowerCase();
+  }
 
 
 }

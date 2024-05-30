@@ -2,7 +2,7 @@
   <div class="max-w-7xl mx-auto flex justify-center items-center">
     <div class="flex items-center space-x-4">
       @for (seccion of secciones; track seccion) {
-        <a routerLink="/referencias" class="hover:text-gray-400" type="button">{{seccion.nombreSeccion}}</a>
+        <a [routerLink]="['/',concat(seccion.nombreSeccion),seccion.id]"  class="hover:text-gray-400" type="button">{{seccion.nombreSeccion}}</a>
 
       }
  
