@@ -8,10 +8,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/articulo")
+@CrossOrigin(origins = "http://localhost:4200/")
 public class ControllerArticulo {
     @Autowired
     ServiceSeccion serviceSeccion;
@@ -40,6 +42,18 @@ public class ControllerArticulo {
     @GetMapping("getAll")
     public Iterable<Articulo> getAll(){
         return serviceArticulo.findAll();
+    }
+
+    @GetMapping("getByIdSeccion/{id}")
+    public ResponseEntity<Object> getByIdSeccion(@PathVariable int id){
+          Optional<Seccion> secciona = serviceSeccion.findById(id);
+          if(secciona.isPresent()){
+              Iterable<Articulo>  a= serviceArticulo.findByidSeccionFk( secciona.get());
+
+          return ResponseEntity.status(200).body(a);
+          }
+          return ResponseEntity.status(400).body("No se encontraron datos");
+
     }
 
     @GetMapping("delete/{idArticulo}")
