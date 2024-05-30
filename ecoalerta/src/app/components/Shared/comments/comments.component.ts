@@ -15,6 +15,7 @@ export class CommentsComponent implements OnInit {
 
   comments: Comment[] = [];  
   replyContent: string = '';
+  newCommentContent: string = ''; // Declaración de newCommentContent
 
   constructor() { }
 
@@ -54,6 +55,19 @@ export class CommentsComponent implements OnInit {
     comment.replies.push({ id: comment.replies.length + 1, author: 'Usuario', content: this.replyContent, editing: false, replies: [] });
     this.replyContent = '';
     comment.replying = false;
+  }
+
+  // Crear un nuevo comentario y agregarlo a la lista de comentarios
+  createComment() {
+    const newComment: Comment = {
+      id: this.comments.length + 1,
+      author: 'Nuevo Usuario',
+      content: this.newCommentContent, // Utilizamos el valor de newCommentContent
+      editing: false,
+      replies: []
+    };
+    this.comments.push(newComment);
+    this.newCommentContent = ''; // Limpiamos el área de texto después de agregar el comentario
   }
 
 }

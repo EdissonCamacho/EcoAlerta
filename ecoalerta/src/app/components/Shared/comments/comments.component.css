@@ -6,6 +6,33 @@
     box-shadow: 0 2px 4px rgba(0,0,0,0.1);
     background-color: #f9f9f9;
   }
+
+  .new-comment-container {
+    display: flex;
+    align-items: center;
+  }  
+  .new-comment-textarea {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    resize: none;
+  }
+  .create-comment-button {
+    background-color: #056E34;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .create-comment-button:hover {
+    background-color: #cc0812;
+  }
   
   .comment-header {
     font-weight: bold;

@@ -1,3 +1,9 @@
+<div class="new-comment-container">
+  <textarea [(ngModel)]="newCommentContent" placeholder="Escribe un nuevo comentario..." class="new-comment-textarea"></textarea>
+  <button (click)="createComment()" class="create-comment-button">Crear Comentario</button>
+<hr>
+</div>
+
 <div *ngFor="let comment of comments" class="comment-container">
     <div class="comment-header">
       <strong>{{ comment.author }}</strong> dijo:
