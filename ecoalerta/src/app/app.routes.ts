@@ -6,7 +6,7 @@ export const routes: Routes = [
     {
         path:"",component:CarruselComponent
     },
-    {path:"referencias",component:PaginationComponent}
+    {path:"referenciasbibliograficas/:id",component:PaginationComponent}
 
 
 ];

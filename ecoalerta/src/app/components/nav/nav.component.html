@@ -1,12 +1,11 @@
 <nav class="bg-green-800 text-white p-4">
   <div class="max-w-7xl mx-auto flex justify-center items-center">
     <div class="flex items-center space-x-4">
-      
-      <a routerLink="/referencias" class="hover:text-gray-400" type="button">Referencias Bibliográficas</a>
-      <a href="#" class="hover:text-gray-400">Impactos Ambientales</a>
-      <a href="#" class="hover:text-gray-400">Impactos Agrícolas</a>
-      <a href="#" class="hover:text-gray-400">Zonas Afectadas</a>
-      <a href="#" class="hover:text-gray-400">Áreas Protegidas</a>
+      @for (seccion of secciones; track seccion) {
+        <a [routerLink]="['/',concat(seccion.nombreSeccion),seccion.id]"  class="hover:text-gray-400" type="button">{{seccion.nombreSeccion}}</a>
+
+      }
+ 
     </div>
   </div>
 </nav>
