@@ -1,22 +1,18 @@
 <div class="grid gap-1 lg:mt-20 lg:ml-40 md:ml-2 md:mt-7 sm:grid-cols-2 lg:grid-cols-3 h-[100vh]">
 
     <div class="col-span-2 row-span-2  grid sm:grid-cols-2 lg:grid-cols-2 md:grid-cols-2  lg:ml-20 gap-5">
-        <button class="w-full bg-green-800">
-            <div class="h-3/4 w-full bg-green-800"> </div>
-            <div class="bg-white h-3/4 text-lg"> Lorem ipsum dolor sit amet, consectetur adipiscing elit</div>
-        </button>
-        <button class="w-full bg-green-800">
-            <div class="h-3/4 w-full bg-green-800"> </div>
-            <div class="bg-white h-3/4 text-lg"> Lorem ipsum dolor sit amet, consectetur adipiscing elit</div>
-        </button>
-        <button class="w-full bg-green-800">
-            <div class="h-3/4 w-full bg-green-800"> </div>
-            <div class="bg-white h-1/4 text-lg"> Lorem ipsum dolor sit amet, consectetur adipiscing elit</div>
-        </button>
-        <button class="w-full bg-green-800">
-            <div class="h-3/4 w-full bg-green-800"> </div>
-            <div class="bg-white h-1/4 text-lg"> Lorem ipsum dolor sit amet, consectetur adipiscing elit</div>
-        </button>
+        @for (  item of articulos; track item) {
+            <button class="w-full bg-green-800">
+                <div class="h-3/4 w-full bg-green-800"> </div>
+                <div class="bg-white h-3/4 text-lg"> {{item.tituloArticulo}}</div>
+            </button>
+
+
+        }
+        
+        
+        
+       
 
     </div>
     <div class=" ml-12">
