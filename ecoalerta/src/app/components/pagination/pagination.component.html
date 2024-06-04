@@ -2,11 +2,13 @@
 
     <div class="col-span-2 row-span-2  grid sm:grid-cols-2 lg:grid-cols-2 md:grid-cols-2  lg:ml-20 gap-5">
         @for (  item of articulos; track item) {
-            <button class="w-full bg-green-800">
-                <div class="h-3/4 w-full bg-green-800"> </div>
-                <div class="bg-white h-3/4 text-lg"> {{item.tituloArticulo}}</div>
-            </button>
-
+            <button class="w-full h-full rounded-lg border hover:opacity-60" style="position: relative;">
+                <img src="assets/images/paramo1.jpg" class="h-full w-full rounded-lg">
+                <div class="text-lg hover:text-black translate-x-6" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 1;">
+                  
+                </div>
+                {{ item.tituloArticulo }}
+              </button>
 
         }
         
