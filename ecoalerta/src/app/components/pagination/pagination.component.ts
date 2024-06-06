@@ -1,10 +1,12 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { PaginationService } from './pagination.service';
+import { PaginationService } from '../../Services/pagination.service';
 import { Observable } from 'rxjs';
-import { Seccion } from '../../models/Seccion';
-import { Articulo } from '../../models/Articulo';
+import { Seccion } from '../../Models/Seccion';
+import { Articulo } from '../../Models/Articulo';
 import { ReactiveFormsModule } from '@angular/forms';
+import { ImagenArticuloService } from '../../Services/imagen-articulo.service';
+import { ImagenArticulo } from '../../Models/imagen-articulo';
 
 @Component({
   selector: 'app-pagination',
@@ -25,9 +27,12 @@ export class PaginationComponent implements OnInit ,OnDestroy {
   //Mostrar por Seleccion
   articulo:Articulo[]=[];
 
+  //imagen individual
+  imagenes:any[]=[];
+
 
   
-  constructor( private route: ActivatedRoute,private servicePagination:PaginationService){
+  constructor( private route: ActivatedRoute,private servicePagination:PaginationService,private serviceImagenArticulo:ImagenArticuloService){
 
   }
   ngOnInit(): void {
@@ -37,6 +42,9 @@ export class PaginationComponent implements OnInit ,OnDestroy {
     this.loadArticulos();
     //divisionPag
     this.mostrarPag(0);
+    //Cargar Imagenes
+    this.cargarImagen()
+    
   
   }
 
@@ -45,11 +53,16 @@ export class PaginationComponent implements OnInit ,OnDestroy {
   }
   
   divisionPagina(){
+    
+
+
     let tamanoPag:number=4;
     for (let i = 0; i < this.articulos.length; i += tamanoPag) {
+      console.log(this.articulos[i].id);
+
       this.pagArticulos.push(this.articulos.slice(i, i + tamanoPag));
   }
-  console.log(this.pagArticulos);
+  
 
 
   }
@@ -81,6 +94,31 @@ export class PaginationComponent implements OnInit ,OnDestroy {
      
 
   }
+  cargarImagen(){
+    this.serviceImagenArticulo.getImagenesArticulo().subscribe(
+      (data:ImagenArticulo[])=>{
+        this.imagenes=data;
+        
+        
+      }
+    )
+  }
+
+  buscarImagen(id:number){
+    let url:string="";
+   for (let index = 0; index < this.imagenes.length; index++) {
+    if(id==this.imagenes[index].idArticuloFk.id){
+      url=this.imagenes[index].idImagenFk.url;
+      
+      
+    }
+    
+   }
+   return url;
+
+  }
+
+  
 
 
 }

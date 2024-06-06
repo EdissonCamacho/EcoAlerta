@@ -2,8 +2,8 @@ import { Component, OnInit, inject } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { RouterLink } from '@angular/router';
 import { RouterLinkActive } from '@angular/router';
-import { Seccion } from '../../models/Seccion';
-import { SeccionService } from './seccion.service';
+import { Seccion } from '../../Models/Seccion';
+import { SeccionService } from '../../Services/seccion.service';
 
 @Component({
   selector: 'app-nav',

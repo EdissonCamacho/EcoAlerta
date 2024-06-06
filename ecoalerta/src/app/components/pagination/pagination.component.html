@@ -4,15 +4,15 @@
         @for (  item of articulo; track item) {
          @if (articulo.length>=4) {
           <button  class="w-full  h-full rounded-lg border hover:opacity-60" style="position: relative;">
-            <img src="assets/images/paramo1.jpg" class="h-full w-full rounded-lg">
+            <img [src]="buscarImagen(item.id)" class="h-full w-full rounded-lg">
                 <div class="text-lg hover:text-black translate-x-6" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 1;">
                   
                 </div>
                 {{ item.tituloArticulo }}
               </button>
          }@else {
-          <button  class="w-full h-2/4  rounded-lg border hover:opacity-60" style="position: relative;">
-            <img src="assets/images/paramo1.jpg" class="h-full w-full rounded-lg">
+          <button  class=" w-full h-2/4  rounded-lg border hover:opacity-60" style="position: relative;">
+            <img [src]="buscarImagen(item.id)" class="h-full w-full rounded-lg">
                 <div class="text-lg hover:text-black translate-x-6" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 1;">
                   
                 </div>
