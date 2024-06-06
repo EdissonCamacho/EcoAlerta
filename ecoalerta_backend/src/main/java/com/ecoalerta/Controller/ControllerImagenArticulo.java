@@ -3,11 +3,9 @@ package com.ecoalerta.Controller;
 import com.ecoalerta.Model.Articulo;
 import com.ecoalerta.Model.Imagen;
 import com.ecoalerta.Model.Imagenarticulo;
+import com.ecoalerta.Model.Seccion;
 import com.ecoalerta.Operaciones.ImagenArticulo;
-import com.ecoalerta.Services.ServImagen;
-import com.ecoalerta.Services.ServiceArticulo;
-import com.ecoalerta.Services.ServiceImagenArticulo;
-import com.ecoalerta.Services.ServiceUsuario;
+import com.ecoalerta.Services.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -16,6 +14,7 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("api/imagenArticulo")
+@CrossOrigin(origins = "*")
 public class ControllerImagenArticulo {
     @Autowired
     ServiceImagenArticulo serviceImagenArticulo;
@@ -23,7 +22,8 @@ public class ControllerImagenArticulo {
     ServiceArticulo serviceArticulo;
     @Autowired
     ServImagen servImagen;
-
+    @Autowired
+    ServiceSeccion serviceSeccion;
     public static ImagenArticulo imagenArticulo;
 
     @GetMapping("getAll")
@@ -40,6 +40,8 @@ public class ControllerImagenArticulo {
         return ResponseEntity.status(404).body("No se encontraron Imagenes para el articulo "+ idArticulo );
 
     }
+
+
     @PostMapping("create")
     public ResponseEntity<Object> create(@RequestParam Integer idArticulo,@RequestParam Integer idImagen){
         imagenArticulo= new ImagenArticulo();
