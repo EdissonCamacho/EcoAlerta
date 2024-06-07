@@ -109,12 +109,18 @@ export class PaginationComponent implements OnInit ,OnDestroy {
    for (let index = 0; index < this.imagenes.length; index++) {
     if(id==this.imagenes[index].idArticuloFk.id){
       url=this.imagenes[index].idImagenFk.url;
+      break;
       
       
     }
     
    }
-   return url;
+   if(url!=""){
+    return url;
+    
+   }
+   return "assets/images/default.jpg"
+   
 
   }
 
