@@ -11,6 +11,8 @@ import java.util.Set;
 
 @Data
 @Entity
+@Getter
+@Setter
 @Table(name = "rol", schema = "ecoalerta")
 public class Rol {
 
