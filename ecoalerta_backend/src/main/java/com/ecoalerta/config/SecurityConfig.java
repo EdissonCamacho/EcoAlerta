@@ -1,6 +1,7 @@
 package com.ecoalerta.config;
 
 import com.ecoalerta.Operaciones.UserDetailServiceImpl;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cglib.proxy.NoOp;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -18,13 +19,16 @@ import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.authentication.www.BasicAuthenticationFilter;
+import com.ecoalerta.util.*;
 
 @Configuration
 @EnableWebSecurity
-@EnableMethodSecurity
-
-
 public class SecurityConfig {
+
+    @Autowired
+    private JwtUtils jwtUtils;
+
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity)  throws Exception{
         return httpSecurity
@@ -32,11 +36,13 @@ public class SecurityConfig {
                 .httpBasic(Customizer.withDefaults())
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authorizeHttpRequests(http -> {
-                    // Configurar los endpoints publicos
-                    http.requestMatchers("/api/articulo/getAll").authenticated();
+
+
+                    http.anyRequest().permitAll();
 
 
                 })
+                .addFilterBefore(new JwtTokenValidator(jwtUtils), BasicAuthenticationFilter.class)
                 .build();
 
     }
