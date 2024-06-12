@@ -7,4 +7,7 @@ import org.springframework.stereotype.Service;
 
 public interface ServiceRolUsuario extends CrudRepository <RolUsuario, Integer> {
 
+
+
+
 }
