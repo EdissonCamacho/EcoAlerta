@@ -38,7 +38,10 @@ public class SecurityConfig {
                 .authorizeHttpRequests(http -> {
 
 
+                    //http.requestMatchers("/api/seccion/getAll").authenticated();
                     http.anyRequest().permitAll();
+
+                   // http.anyRequest().permitAll();
 
 
                 })
