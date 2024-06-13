@@ -7,11 +7,14 @@ import { Articulo } from '../../Models/Articulo';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ImagenArticuloService } from '../../Services/imagen-articulo.service';
 import { ImagenArticulo } from '../../Models/imagen-articulo';
+import { RouterOutlet } from '@angular/router';
+import { RouterLink } from '@angular/router';
+import { RouterLinkActive } from '@angular/router';
 
 @Component({
   selector: 'app-pagination',
   standalone: true,
-  imports: [ReactiveFormsModule],
+  imports: [ReactiveFormsModule,RouterOutlet,RouterLink,RouterLinkActive],
   templateUrl: './pagination.component.html',
   styleUrl: './pagination.component.css'
 })

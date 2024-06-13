@@ -1,61 +1,69 @@
 <div class="grid gap-1 lg:mt-20 lg:ml-40 md:ml-2 md:mt-7 sm:grid-cols-2 lg:grid-cols-3 h-[100vh]">
 
-    <div class="col-span-2 row-span-2  grid sm:grid-cols-2 lg:grid-cols-2 md:grid-cols-2  lg:ml-20 gap-12">
-        @for (  item of articulo; track item) {
-         @if (articulo.length>=4) {
-          <button  class="w-full  h-full rounded-lg border hover:opacity-60" style="position: relative;">
-            <img [src]="buscarImagen(item.id)" class="h-full w-full rounded-lg">
-                <div class="text-lg hover:text-black translate-x-6" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 1;">
-                  
-                </div>
-                {{ item.tituloArticulo }}
-              </button>
-         }@else {
-          <button  class=" w-full h-2/4  rounded-lg border hover:opacity-60" style="position: relative;">
-            <img [src]="buscarImagen(item.id)" class="h-full w-full rounded-lg">
-                <div class="text-lg hover:text-black translate-x-6" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 1;">
-                  
-                </div>
-                {{ item.tituloArticulo }}
-              </button>
-         }
+  <div class="col-span-2 row-span-2  grid sm:grid-cols-2 lg:grid-cols-2 md:grid-cols-2  lg:ml-20 gap-12">
+    @for ( item of articulo; track item) {
+    @if (articulo.length>=4) {
+    <a [routerLink]="[ '/article', item.id]" class="w-full  h-full rounded-lg border hover:opacity-60"
+      style="position: relative;">
 
-            
-                
+      <img [src]="buscarImagen(item.id)" class="h-full w-full rounded-lg">
+      <div class="text-lg hover:text-black translate-x-6"
+        style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 1;">
 
-        }
-        
-        
-        
-       
+      </div>
+      {{ item.tituloArticulo }}
+    </a>
+    }@else {
 
+
+    <a [routerLink]="[ '/article', item.id]" class="w-full  h-2/4 rounded-lg border hover:opacity-60"
+      style="position: relative;">
+
+      <img [src]="buscarImagen(item.id)" class="h-full w-full rounded-lg">
+      <div class="text-lg hover:text-black translate-x-6"
+        style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 1;">
+
+      </div>
+      {{ item.tituloArticulo }}
+    </a>
+    }
+
+
+
+
+    }
+
+
+
+
+
+  </div>
+  <div class=" ml-12">
+    <div class="grid grid-cols-1">
+      <div class=" row-span-2 h-10 w-2/4 bg-green-800 "></div>
+      <div class="mt-8">Secciones</div>
+      <div>Lorem Ispum</div>
+      <div>Lorem Ispum</div>
+      <div>Lorem Ispum</div>
     </div>
-    <div class=" ml-12">
-        <div class="grid grid-cols-1">
-            <div class=" row-span-2 h-10 w-2/4 bg-green-800 "></div>
-            <div class="mt-8">Secciones</div>
-            <div>Lorem Ispum</div>
-            <div>Lorem Ispum</div>
-            <div>Lorem Ispum</div>
-        </div>
-        <div class="grid grid-cols-1">
-            <div class="mt-8">Latest Post</div>
-            <div>Lorem Ispum</div>
-            <div>Lorem Ispum</div>
-            <div>Lorem Ispum</div>
-        </div>
-        <div class="grid grid-cols-1">
-            <div class="mt-8">Latest Post</div>
-            <div>Lorem Ispum</div>
-            <div>Lorem Ispum</div>
-            <div>Lorem Ispum</div>
-        </div>
+    <div class="grid grid-cols-1">
+      <div class="mt-8">Latest Post</div>
+      <div>Lorem Ispum</div>
+      <div>Lorem Ispum</div>
+      <div>Lorem Ispum</div>
     </div>
+    <div class="grid grid-cols-1">
+      <div class="mt-8">Latest Post</div>
+      <div>Lorem Ispum</div>
+      <div>Lorem Ispum</div>
+      <div>Lorem Ispum</div>
+    </div>
+  </div>
 </div>
 
 <nav aria-label="Page navigation example" class="flex items-center justify-center mt-10">
-    <ul class="list-style-none flex gap-2">
-   <!--   <li>
+  <ul class="list-style-none flex gap-2">
+    <!--   <li>
         <a
           class="relative block rounded bg-[#80B598] px-3 py-1.5 text-sm text-surface transition duration-300 hover:bg-neutral-100 focus:bg-neutral-100 focus:text-primary-700 focus:outline-none active:bg-neutral-100 active:text-primary-700 dark:text-white dark:hover:bg-neutral-700 dark:focus:bg-neutral-700 dark:focus:text-primary-500 dark:active:bg-neutral-700 dark:active:text-primary-500"
           href="#"
@@ -63,18 +71,15 @@
           <span aria-hidden="true">&laquo;</span>
         </a>
       </li>-->
-      @for (item of pagArticulos; track $index) {
-        <li>
-          <button
-            (click)="mostrarPag($index)" class="relative block rounded bg-[#80B598]  px-3 py-1.5 text-sm text-surface transition duration-300 hover:bg-neutral-100 focus:bg-neutral-100 focus:text-primary-700 focus:outline-none active:bg-neutral-100 active:text-primary-700 dark:text-white dark:hover:bg-neutral-700 dark:focus:bg-neutral-700 dark:focus:text-primary-500 dark:active:bg-neutral-700 dark:active:text-primary-500"
-            
-            >{{$index+1}}</button
-          >
-        </li>
+    @for (item of pagArticulos; track $index) {
+    <li>
+      <button (click)="mostrarPag($index)"
+        class="relative block rounded bg-[#80B598]  px-3 py-1.5 text-sm text-surface transition duration-300 hover:bg-neutral-100 focus:bg-neutral-100 focus:text-primary-700 focus:outline-none active:bg-neutral-100 active:text-primary-700 dark:text-white dark:hover:bg-neutral-700 dark:focus:bg-neutral-700 dark:focus:text-primary-500 dark:active:bg-neutral-700 dark:active:text-primary-500">{{$index+1}}</button>
+    </li>
 
-      }
-      
-     <!-- <li>
+    }
+
+    <!-- <li>
         <a
           class="relative block rounded bg-[#80B598]  px-3 py-1.5 text-sm text-surface transition duration-300 hover:bg-neutral-100 focus:bg-neutral-100 focus:text-primary-700 focus:outline-none active:bg-neutral-100 active:text-primary-700 dark:text-white dark:hover:bg-neutral-700 dark:focus:bg-neutral-700 dark:focus:text-primary-500 dark:active:bg-neutral-700 dark:active:text-primary-500"
           href="#"
@@ -82,5 +87,5 @@
           ><span aria-hidden="true">&raquo;</span>
         </a>
       </li>-->
-    </ul>
- </nav>
+  </ul>
+</nav>
