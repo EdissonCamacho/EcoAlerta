@@ -1,0 +1,49 @@
+/* Estilos para el contenedor principal */
+.container {
+  max-width: 80%; /* Se establece en el 80% del ancho del contenedor padre */
+  margin: 0 auto;
+  padding: 2%; /* Se establece en el 2% del ancho del contenedor principal */
+}
+
+/* Estilos para el título de la noticia */
+#titulo-noticia {
+  color: #333; /* Color del texto */
+  font-size: 2.5rem; /* Tamaño de fuente */
+  font-weight: bold; /* Grosor de la fuente */
+  text-align: center; /* Alineación del texto al centro */
+  /* margin-bottom: 2%; Espaciado inferior, se establece en el 2% del contenedor principal */
+  margin: 0vw 13vw 0;
+  margin-top: 20vh; /* Centra verticalmente el título en la mitad de la pantalla */
+  transform: translateY(-50%); /* Ajusta la posición vertical del título */
+}
+
+/* Estilos para el texto de la noticia */
+p.lead {
+  color: #555; /* Color del texto */
+  font-size: 1.2rem; /* Tamaño de fuente */
+  line-height: 1.6; /* Altura de línea */
+  text-align: justify; /* Alineación del texto */
+}
+
+.img-noticia {
+  width: 90%; /* Ajusta la imagen al 100% del ancho del contenedor */
+  height: auto; /* Altura automática para mantener la proporción */
+  display: block;
+  margin-right: auto;
+  margin-left: 2em; /* Centra horizontalmente la imagen */
+  border-radius: 50%; /* Hace que la imagen sea redondeada */
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+/* Ajustar el ancho de las columnas en dispositivos grandes */
+@media (min-width: 992px) {
+  .col-md-8,
+  .col-md-4 {
+    flex-basis: 50%;
+    max-width: 50%;
+  }
+}  

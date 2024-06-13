@@ -1,31 +1,33 @@
-<div class="new-comment-container">
-  <textarea [(ngModel)]="newCommentContent" placeholder="Escribe un nuevo comentario..." class="new-comment-textarea"></textarea>
-  <button (click)="createComment()" class="create-comment-button">Crear Comentario</button>
-<hr>
-</div>
+<div class="container">
+  <div class="new-comment-container">
+    <textarea [(ngModel)]="newCommentContent" placeholder="Escribe un nuevo comentario..." class="new-comment-textarea"></textarea>
+    <button (click)="createComment()" class="create-comment-button">Crear Comentario</button>
+  <hr>
+  </div>
 
-<div *ngFor="let comment of comments" class="comment-container">
-    <div class="comment-header">
-      <strong>{{ comment.author }}</strong> dijo:
-    </div>
-    <div class="comment-content">
-      <span *ngIf="!comment.editing">{{ comment.content }}</span>
-      <textarea *ngIf="comment.editing" [(ngModel)]="comment.content" class="textarea-container"></textarea>
-    </div>
-    <div class="comment-actions">
-      <button (click)="toggleEdit(comment)">Editar</button>
-      <button (click)="deleteComment(comment)" class="delete-button">Eliminar</button>
-    </div>
-    <div *ngFor="let reply of comment.replies" class="reply-container">
-      <strong>{{ reply.author }}</strong> respondió:
-      {{ reply.content }}
-    </div>
-    <div class="comment-actions">
-      <button (click)="toggleReply(comment)">Responder</button>
-      <div *ngIf="comment.replying" class="textarea-container">
-        <textarea [(ngModel)]="replyContent"></textarea>
-        <button (click)="addReply(comment)" class="reply-button">Enviar respuesta</button>
+  <div *ngFor="let comment of comments" class="comment-container">
+      <div class="comment-header">
+        <strong>{{ comment.author }}</strong> dijo:
       </div>
-    </div>
-</div>
+      <div class="comment-content">
+        <span *ngIf="!comment.editing">{{ comment.content }}</span>
+        <textarea *ngIf="comment.editing" [(ngModel)]="comment.content" class="textarea-container"></textarea>
+      </div>
+      <div class="comment-actions">
+        <button (click)="toggleEdit(comment)">Editar</button>
+        <button (click)="deleteComment(comment)" class="delete-button">Eliminar</button>
+      </div>
+      <div *ngFor="let reply of comment.replies" class="reply-container">
+        <strong>{{ reply.author }}</strong> respondió:
+        {{ reply.content }}
+      </div>
+      <div class="comment-actions">
+        <button (click)="toggleReply(comment)">Responder</button>
+        <div *ngIf="comment.replying" class="textarea-container">
+          <textarea [(ngModel)]="replyContent"></textarea>
+          <button (click)="addReply(comment)" class="reply-button">Enviar respuesta</button>
+        </div>
+      </div>
+  </div>
 
+</div>
