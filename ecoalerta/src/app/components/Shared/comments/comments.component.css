@@ -1,5 +1,12 @@
+.container {
+  display: flex;
+  flex-direction: column; /* Alinea los elementos en una columna */
+  justify-content: center; /* Centra verticalmente */
+  height: 100vh; /* Establece la altura del contenedor al 100% de la altura de la ventana gráfica */
+}
 .comment-container {
-    margin-bottom: 20px;
+    margin-bottom: 1em;
+    margin-right: 2em;
     padding: 15px;
     border-radius: 8px;
     border: 1px solid #ddd;
@@ -12,11 +19,12 @@
     align-items: center;
   }  
   .new-comment-textarea {
-    flex: 1;
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 10px;
-    resize: none;
+    resize: both; /* Permite al usuario cambiar el tamaño del textarea */
+    width: 50%; /* Establece el ancho en el 50% del ancho del contenedor padre */
+    min-width: 60vw; /* Establece un ancho mínimo del 60% del ancho de la pantalla */
   }
   .create-comment-button {
     background-color: #056E34;
@@ -28,6 +36,8 @@
     font-weight: bold;
     cursor: pointer;
     transition: background-color 0.3s ease;
+    margin-left: 10px;
+    margin-right: 10px;
   }
   
   .create-comment-button:hover {
