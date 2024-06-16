@@ -6,13 +6,14 @@ import com.ecoalerta.Services.ServiceComentario;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("API/Comentario")
 public class ControllerComentario {
     @Autowired
-    ServiceComentario serv;
+    private ServiceComentario serv;
 
     @GetMapping("getAll")
     public Iterable<Comentario> getAll(){
@@ -21,11 +22,10 @@ public class ControllerComentario {
     }
 
     @PostMapping("create")
-    public Comentario create(@RequestParam String com){
+    public ResponseEntity<Object> create(@ResponseBody Comentario com){
 
-        Comentario c = new Comentario();
-        c.setComentario(com);
-        return serv.save(c);
+        Comentario comentario = serv.save(com);
+        return ResponseEntity.status(200).body(comentario);
 
     }
 
