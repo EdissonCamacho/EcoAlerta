@@ -14,4 +14,8 @@ export class ImagenArticuloService {
   public getImagenesArticulo():Observable<ImagenArticulo[]>{
     return this.http.get<ImagenArticulo[]>(this.url+"getAll");
   }
+
+  public getByArticulo(articulo:string):Observable<ImagenArticulo[]>{
+    return this.http.get<ImagenArticulo[]>(this.url+"getByArticulo/"+articulo);
+  }
 }
