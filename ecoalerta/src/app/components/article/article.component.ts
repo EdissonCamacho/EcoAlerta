@@ -25,6 +25,7 @@ export class ArticleComponent {
     ngOnInit(): void {
       
       this.obtenerParamsUrl();
+     
     }
   
     private sub: any;

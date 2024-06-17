@@ -22,7 +22,7 @@ public class ControllerComentario {
     }
 
     @PostMapping("create")
-    public ResponseEntity<Object> create(@ResponseBody Comentario com){
+    public ResponseEntity<Object> create(@RequestBody Comentario com){
 
         Comentario comentario = serv.save(com);
         return ResponseEntity.status(200).body(comentario);
