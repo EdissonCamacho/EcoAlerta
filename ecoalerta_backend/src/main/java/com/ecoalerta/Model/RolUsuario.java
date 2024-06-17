@@ -9,6 +9,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @Entity
+@Data
 @Table(name = "rol_usuario", schema = "ecoalerta")
 public class RolUsuario {
 

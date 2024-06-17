@@ -3,21 +3,25 @@
       <!-- Columna para el formulario de registro -->
       <div class="w-1/2 p-8">
         <h2 class="text-green-500 mb-5">Formulario de Registro</h2>
-        <form>
-          <label for="nombre" class="block mb-2 text-gray-700 font-bold">Nombre:</label>
-          <input type="text" id="nombre" name="nombre" required class="w-full mb-4 p-2 border border-gray-300 rounded" />
+        <form [formGroup]="formRegister" (ngSubmit)="onSubmit()" >
+          <label for="nombre" class="block mb-2 text-gray-700 font-bold">Nombre Usuario:</label>
+          <input type="text" formControlName="usuario" id="nombre" name="nombre" required class="w-full mb-4 p-2 border border-gray-300 rounded" />
   
-          <label for="apellido" class="block mb-2 text-gray-700 font-bold">Apellido:</label>
-          <input type="text" id="apellido" name="apellido" required class="w-full mb-4 p-2 border border-gray-300 rounded" />
+          <label for="apellido" class="block mb-2 text-gray-700 font-bold">Nombre:</label>
+          <input type="text" formControlName="nombre" id="nombre" name="nombre" required class="w-full mb-4 p-2 border border-gray-300 rounded" />
   
-          <label for="email" class="block mb-2 text-gray-700 font-bold">Correo Electrónico:</label>
-          <input type="email" id="email" name="email" required class="w-full mb-4 p-2 border border-gray-300 rounded" />
+          <label for="email" class="block mb-2 text-gray-700 font-bold">Apellido:</label>
+          <input type="text" id="apellido" formControlName="apellido" name="apellido" required class="w-full mb-4 p-2 border border-gray-300 rounded" />
   
-          <label for="contrasena" class="block mb-2 text-gray-700 font-bold">Contraseña:</label>
-          <input type="password" id="contrasena" name="contrasena" pattern="^(?=.*\d)(?=.*[a-zA-Z])(?=.*[^a-zA-Z0-9])\S{8,}$" title="La contraseña debe contener al menos un número, una letra y un símbolo, y tener al menos 8 caracteres" required class="w-full mb-4 p-2 border border-gray-300 rounded" />
+          <label for="telefono" class="block mb-2 text-gray-700 font-bold">Telefono:</label>
+          <input type="text" id="telefono" formControlName="telefono" name="telefono" required class="w-full mb-4 p-2 border border-gray-300 rounded" />
+          
+          <label for="email" class="block mb-2 text-gray-700 font-bold">Email:</label>
+          <input type="email" id="email" formControlName="email" name="email" required class="w-full mb-4 p-2 border border-gray-300 rounded" />
+          <label for="password" class="block mb-2 text-gray-700 font-bold">Contraseña:</label>
+          <input type="password"  id="password" formControlName="password" name="password"  required class="w-full mb-4 p-2 border border-gray-300 rounded" />
   
-          <label for="confirmarContrasena" class="block mb-2 text-gray-700 font-bold">Confirmar Contraseña:</label>
-          <input type="password" id="confirmarContrasena" name="confirmarContrasena" required class="w-full mb-4 p-2 border border-gray-300 rounded" />
+         
   
           <button type="submit" class="w-full bg-green-500 text-white font-bold py-3 rounded mb-4">Registrarse</button>
           <button type="button" class="flex items-center justify-center w-full border-2 border-black text-black font-bold py-3 rounded">

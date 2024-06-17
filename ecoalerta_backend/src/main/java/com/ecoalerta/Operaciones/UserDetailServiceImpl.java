@@ -2,9 +2,11 @@ package com.ecoalerta.Operaciones;
 
 import com.ecoalerta.Model.Rol;
 
+import com.ecoalerta.Model.RolUsuario;
 import com.ecoalerta.Model.Usuario;
 import com.ecoalerta.Services.ServiceRol;
 
+import com.ecoalerta.Services.ServiceRolUsuario;
 import com.ecoalerta.Services.ServiceUsuario;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.BadCredentialsException;
@@ -21,11 +23,13 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import com.ecoalerta.util.JwtUtils;
 import com.ecoalerta.Controller.dto.AuthLoginRequest;
+import com.ecoalerta.Model.Usuario;
 
 import java.security.Security;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
+import java.util.Optional;
 
 
 @Service
@@ -40,6 +44,8 @@ public class UserDetailServiceImpl implements UserDetailsService {
     private ServiceUsuario userRepository;
     @Autowired
     private ServiceRol serviceRol;
+    @Autowired
+    private ServiceRolUsuario serviceRolUsuario;
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
@@ -70,7 +76,20 @@ public class UserDetailServiceImpl implements UserDetailsService {
     }
 
     public String createUser(Usuario usuario){
+
+        usuario.setPassword(passwordEncoder.encode(usuario.getPassword()));
         Usuario userSaved= userRepository.save(usuario);
+        Optional<Rol> rol = serviceRol.findById(1);
+        RolUsuario ru= new RolUsuario();
+        ru.setIdRolFk(rol.get());
+        ru.setIdUsuarioFk(userSaved);
+
+
+
+        serviceRolUsuario.save(ru);
+
+
+
         Collection<Rol> roles= serviceRol.findRolesByUsuario(userSaved.getUsuario());
         List<SimpleGrantedAuthority> authorityList = new ArrayList<>();
         if(roles.isEmpty()){

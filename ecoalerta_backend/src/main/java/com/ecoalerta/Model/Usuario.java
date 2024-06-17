@@ -59,10 +59,6 @@ public class Usuario {
     private boolean credentialNoExpired;
 
 
-
-
-
-
     @NotNull
     @ManyToOne()
     @JoinColumn(name = "Id_ciudad_FK", nullable = false)
