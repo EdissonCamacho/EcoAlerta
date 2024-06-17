@@ -1,3 +1,16 @@
+export interface Departamento{
+    id:1,
+    nombreDepartamento:"Boyacá"
+}
+
+export interface Ciudad{
+    id:1,
+    nombreCiudad:"Paipa",
+    idDepartamentoFk:Departamento
+
+
+}
+
 export interface Usuario{
     id:number,
     usuario:string,
@@ -6,8 +19,12 @@ export interface Usuario{
     telefono:string,
     email:string,
     password:string,
-    isEnabled:boolean,
-    accountNoExpired:boolean,
-    accountNoLocked:boolean,
-    credentialNoExpired:boolean,
+    isEnabled:true,
+    accountNoExpired:true,
+    accountNoLocked:true,
+    credentialNoExpired:true,
+    idCiudadFk:Ciudad
+    enabled:true
+
 }
+

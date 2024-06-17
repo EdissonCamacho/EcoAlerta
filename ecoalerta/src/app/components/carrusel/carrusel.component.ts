@@ -22,6 +22,8 @@ export class CarruselComponent implements OnInit {
     setInterval(() => {
       this.siguiente();
     }, 2000);
+
+   
     
     
   }
