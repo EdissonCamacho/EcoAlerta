@@ -1,7 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ActivatedRoute, RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
 import { CommentsComponent } from '../Shared/comments/comments.component';
+import { ArticuloService } from '../../Services/articulo.service';
+import { Articulo } from '../../Models/Articulo';
 
 @Component({
   selector: 'app-article',
@@ -18,18 +20,19 @@ export class ArticleComponent {
     imagenUrl: 'https://elcomercio.pe/resizer/nAuPrNU0Gin2RiKglJB52Ng4Bdg=/1200x1200/smart/filters:format(jpeg):quality(90)/cloudfront-us-east-1.images.arcpublishing.com/elcomercio/PTGU6VFE3BFWZPYW7IBQJCPCBI.jpg'
   };
 
-  constructor(private route: ActivatedRoute){
-
-  }
+  constructor(private route: ActivatedRoute){}
   
     ngOnInit(): void {
       
       this.obtenerParamsUrl();
+      this.obtenerArticuloById(this.id);
      
     }
   
     private sub: any;
     id:number=0;
+    private serviceArticulo=inject(ArticuloService);
+    listaArticulos: any;
   
     obtenerParamsUrl(){
       this.sub=this.route.params.subscribe(params=>{
@@ -37,5 +40,22 @@ export class ArticleComponent {
         console.log(this.id);
       });
     }
+
+    obtenerArticuloById(id: number){
+
+      this.serviceArticulo.getArticulo(id).subscribe((
+        data:any)=>{
+        console.log(data);
+        this.listaArticulos = data;
+      }, (error:any) =>{ 
+        console.log('El error es: '+error);
+         }
+      
+    ) 
+
+
+    }
+
+
 
 }

@@ -56,6 +56,17 @@ public class ControllerArticulo {
 
     }
 
+    @GetMapping("getByIdArticulo/{id}")
+    public ResponseEntity<Object> getByIdArticulo(@PathVariable int id){
+        Optional<Articulo> articulo = serviceArticulo.findById(id);
+        if(articulo.isEmpty()){
+
+            return ResponseEntity.status(400).body("No se encuentra el articulo");
+        }
+        return ResponseEntity.status(200).body(articulo.get());
+
+    }
+
     @GetMapping("delete/{idArticulo}")
     public ResponseEntity<Object> delete(@PathVariable Integer idArticulo){
         serviceArticulo.deleteById(idArticulo);

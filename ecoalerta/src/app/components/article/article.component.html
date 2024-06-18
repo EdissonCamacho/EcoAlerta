@@ -2,14 +2,14 @@
     <!-- Título de la noticia -->
     <div class="row">
       <div class="col text-center">
-        <h1 id="titulo-noticia" class="display-4">{{ noticia.titulo }}</h1>
+        <h1 id="titulo-noticia" class="display-4">{{ listaArticulos.tituloArticulo }}</h1>
       </div>
     </div>
   
     <!-- Texto de la noticia y imagen -->
     <div class="row mt-4">
         <div class="col-md-8 order-md-1">
-          <p class="lead">{{ noticia.texto }}</p>
+          <p class="lead">{{ listaArticulos.informacionArticulo }}</p>
         </div>
         <div class="col-md-4 order-md-2">
           <img src="{{ noticia.imagenUrl }}" alt="Imagen de la noticia" class="img-noticia">

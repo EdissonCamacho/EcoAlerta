@@ -24,12 +24,11 @@ public class Articulo {
     @JoinColumn(name = "Id_seccion_FK", nullable = false)
     private Seccion idSeccionFk;
 
-    @Size(max = 50)
-    @Column(name = "Titulo_articulo", length = 50)
+
+    @Column(name = "Titulo_articulo")
     private String tituloArticulo;
 
-    @Size(max = 45)
-    @Column(name = "Informacion_articulo", length = 45)
+    @Column(name = "Informacion_articulo")
     private String informacionArticulo;
 
 
