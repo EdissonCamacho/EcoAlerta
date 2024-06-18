@@ -3,8 +3,11 @@
     <div class="flex items-center space-x-4">
       @for (seccion of secciones; track seccion) {
         <a [routerLink]="['/',concat(seccion.nombreSeccion),seccion.id]"  class="hover:text-gray-400" type="button">{{seccion.nombreSeccion}}</a>
-
+      
       }
+      <a routerLink="/mapainteractivo"  class="hover:text-gray-400" type="button">Mapa Interactivo</a>
+
+
  
     </div>
   </div>
