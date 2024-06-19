@@ -7,6 +7,7 @@ import { ArticleComponent } from './components/article/article.component';
 import { MapaComponent } from './components/mapa/mapa.component';
 
 
+
 export const routes: Routes = [
     {
         path:"",component:CarruselComponent

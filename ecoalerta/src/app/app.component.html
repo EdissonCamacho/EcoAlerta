@@ -1,11 +1,12 @@
 <div>
   <app-header></app-header>
-  <app-nav> </app-nav>
+  <app-nav></app-nav>
 </div>
-<div>
-  <main class="w-full">
-    <router-outlet> </router-outlet>
+<div class="flex">
+  <main class="w-full flex-grow">
+    <router-outlet></router-outlet>
   </main>
+  <app-sidebar></app-sidebar>
 </div>
 <div class="mt-[100px]">
   <app-footer></app-footer>
