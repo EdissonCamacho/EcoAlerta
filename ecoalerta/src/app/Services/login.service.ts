@@ -10,12 +10,17 @@ import { tap } from 'rxjs';
 export class LoginService {
   private http=inject(HttpClient)
   IsLoggedIn=false;
-  username: string | null = null;
+  username=localStorage.getItem("username");
+ 
   
   public url:string="http://localhost:8080/auth/"
 
 
-  constructor() { }
+  constructor() {
+    if(this.username!=null){
+      this.IsLoggedIn=true;
+    }
+   }
   public login(login:LoginModel):any{
     return this.http.post(this.url+"login",login).pipe(
       tap(response=>{
@@ -30,6 +35,7 @@ export class LoginService {
   logout(){
     this.IsLoggedIn=false;
     this.username=null;
+    localStorage.clear();
   }
 
   public register(usuario:Usuario):any{

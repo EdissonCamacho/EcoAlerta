@@ -1,22 +1,43 @@
+
+
+
+
 <div class="container">
+  @if(loginService.IsLoggedIn){
+
+  
   <div class="new-comment-container">
     <textarea [(ngModel)]="newCommentContent" placeholder="Escribe un nuevo comentario..." class="new-comment-textarea"></textarea>
     <button (click)="createComment()" class="create-comment-button">Crear Comentario</button>
   <hr>
   </div>
+}@else {
+  <div class="new-comment-container">
+    <textarea  placeholder="Debes Iniciar Sesion Para Poder Comentar" class="new-comment-textarea"></textarea>
+    <a  routerLink="/login" class="create-comment-button">Iniciar Sesion</a>
+  <hr>
+  </div>
 
-  <div *ngFor="let comment of comments" class="comment-container">
+
+}
+
+  <div *ngFor="let item of listaComentarios" class="comment-container">
       <div class="comment-header">
-        <strong>{{ comment.author }}</strong> dijo:
+        <strong>{{ item.idUsuarioFk.usuario }}</strong> dijo:
       </div>
       <div class="comment-content">
-        <span *ngIf="!comment.editing">{{ comment.content }}</span>
-        <textarea *ngIf="comment.editing" [(ngModel)]="comment.content" class="textarea-container"></textarea>
+       <span >{{ item.idComentarioFk.comentario }}</span> 
+      
+       <!-- <textarea class="textarea-container">{{item.idComentarioFk.comentario}}</textarea>-->
       </div>
-      <div class="comment-actions">
-        <button (click)="toggleEdit(comment)">Editar</button>
-        <button (click)="deleteComment(comment)" class="delete-button">Eliminar</button>
-      </div>
+     <div class="comment-actions">
+       <!-- <button (click)="toggleEdit(comment)">Editar</button>-->
+        @if (item.idUsuarioFk.usuario==loginService.username) {
+          <button (click)="deleteComment(item.id)" class="delete-button">Eliminar</button>
+
+        }
+        
+      </div> <!--
       <div *ngFor="let reply of comment.replies" class="reply-container">
         <strong>{{ reply.author }}</strong> respondió:
         {{ reply.content }}
@@ -27,7 +48,7 @@
           <textarea [(ngModel)]="replyContent"></textarea>
           <button (click)="addReply(comment)" class="reply-button">Enviar respuesta</button>
         </div>
-      </div>
+      </div> -->
   </div>
 
 </div>
