@@ -3,9 +3,10 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { ActivatedRoute, RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
 import { CommentsComponent } from '../Shared/comments/comments.component';
 import { ArticuloService } from '../../Services/articulo.service';
-import { Articulo } from '../../Models/Articulo';
+
 import { ImagenArticuloService } from '../../Services/imagen-articulo.service';
 import { ImagenArticulo } from '../../Models/imagen-articulo';
+import { Articulo } from '../../Models/Articulo';
 
 @Component({
   selector: 'app-article',
@@ -55,7 +56,7 @@ export class ArticleComponent {
     obtenerArticuloById(id: number){
 
       this.serviceArticulo.getArticulo(id).subscribe((
-        data:any)=>{
+        data:Articulo)=>{
         console.log(data);
         this.listaArticulos = data;
       }, (error:any) =>{ 

@@ -1,13 +1,20 @@
 import { CommonModule } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Comment } from './comments.model';
 import { FormsModule } from '@angular/forms';
+import { LoginService } from '../../../Services/login.service';
+import { Router, RouterOutlet } from '@angular/router';
+import { RouterLink } from '@angular/router';
+import { RouterLinkActive } from '@angular/router';
+import { ComentarioArticulo } from '../../../models/ComentarioArticulo';
+import { ComentarioarticuloService } from '../../../Services/comentarioarticulo.service';
+import { Articulo } from '../../../Models/Articulo';
 
 
 @Component({
   selector: 'app-comments',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule,RouterOutlet,RouterLink,RouterLinkActive],
   templateUrl: './comments.component.html',
   styleUrl: './comments.component.css'
 })
@@ -17,12 +24,34 @@ export class CommentsComponent implements OnInit {
   replyContent: string = '';
   newCommentContent: string = ''; // Declaración de newCommentContent
 
-  constructor() { }
+  constructor(private router:Router,public loginService:LoginService,private serviceComentarioArticulo:ComentarioarticuloService) {  }
+  @Input() articulo:any;
+  listaComentarios:ComentarioArticulo[]=[]
 
   ngOnInit(): void {
     // Cargar comentarios desde servicio o API
-    this.loadComments();
+  //  this.loadComments();
+   // console.log(this.articulo);
+   this.cargarComentarios();
+
+
   }
+  
+
+  cargarComentarios(){
+    this.serviceComentarioArticulo.getAllByArticulo(this.articulo).subscribe(
+      (data:ComentarioArticulo[])=>{
+        this.listaComentarios=data;
+
+       
+      },
+      (error:any)=>{
+        console.log(error)
+      }
+    )
+  }
+
+
 
    // Metodo para cargar comentarios (quemado por ahora)
   loadComments() {
@@ -39,11 +68,26 @@ export class CommentsComponent implements OnInit {
   }
 
   // Metodo para eliminar un comentario
-  deleteComment(comment: Comment) {
+  deleteComment(com:any) {
+
+    this.serviceComentarioArticulo.delete(com).subscribe(
+      (data)=>{
+        console.log(data)
+        this.cargarComentarios();
+        
+      }
+      ,(error:any)=>{
+        console.log(error)
+        this.cargarComentarios();
+      })
+
+      
+
+    /*
     const index = this.comments.indexOf(comment);
     if (index !== -1) {
       this.comments.splice(index, 1);
-    }
+    }*/
   }
 
   // Metodo para alternar la visibilidad del area de respuesta a un comentario
@@ -59,6 +103,34 @@ export class CommentsComponent implements OnInit {
 
   // Crear un nuevo comentario y agregarlo a la lista de comentarios
   createComment() {
+
+    let comentarioar:any={
+      idArticuloFk:{
+        id:Number= this.articulo
+      },
+      idUsuarioFk:{
+        usuario:this.loginService.username
+      },
+      idComentarioFk:{
+        comentario:this.newCommentContent
+      }
+    }
+    // Llamar al servicio para crear el comentario
+    this.serviceComentarioArticulo.crear(comentarioar as ComentarioArticulo).subscribe(
+      (data: any) => {
+        console.log(data);
+        this.cargarComentarios();
+      },
+      (error: any) => {
+        console.log(error);
+        this.cargarComentarios();
+      }
+      
+    );
+
+    this.newCommentContent="";
+
+    /*
     const newComment: Comment = {
       id: this.comments.length + 1,
       author: 'Nuevo Usuario',
@@ -67,7 +139,7 @@ export class CommentsComponent implements OnInit {
       replies: []
     };
     this.comments.push(newComment);
-    this.newCommentContent = ''; // Limpiamos el área de texto después de agregar el comentario
+    this.newCommentContent = ''; // Limpiamos el área de texto después de agregar el comentario*/
   }
 
 }
