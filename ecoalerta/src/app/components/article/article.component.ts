@@ -4,6 +4,8 @@ import { ActivatedRoute, RouterLink, RouterLinkActive, RouterOutlet } from '@ang
 import { CommentsComponent } from '../Shared/comments/comments.component';
 import { ArticuloService } from '../../Services/articulo.service';
 import { Articulo } from '../../Models/Articulo';
+import { ImagenArticuloService } from '../../Services/imagen-articulo.service';
+import { ImagenArticulo } from '../../Models/imagen-articulo';
 
 @Component({
   selector: 'app-article',
@@ -20,12 +22,19 @@ export class ArticleComponent {
     imagenUrl: 'https://elcomercio.pe/resizer/nAuPrNU0Gin2RiKglJB52Ng4Bdg=/1200x1200/smart/filters:format(jpeg):quality(90)/cloudfront-us-east-1.images.arcpublishing.com/elcomercio/PTGU6VFE3BFWZPYW7IBQJCPCBI.jpg'
   };
 
-  constructor(private route: ActivatedRoute){}
+   imagenes:any[]=[]
+   //url de las imagenes del articulo
+   urls:any[]=[]
+
+
+  constructor(private route: ActivatedRoute,private serviceImagenArticulo:ImagenArticuloService){}
   
     ngOnInit(): void {
       
       this.obtenerParamsUrl();
       this.obtenerArticuloById(this.id);
+      this.buscarImagenes();
+     
      
     }
   
@@ -33,14 +42,16 @@ export class ArticleComponent {
     id:number=0;
     private serviceArticulo=inject(ArticuloService);
     listaArticulos: any;
-  
+
+    //Obtener Parametros de la url
     obtenerParamsUrl(){
       this.sub=this.route.params.subscribe(params=>{
         this.id=+params['id']
         console.log(this.id);
       });
     }
-
+    
+    //Obtener articulo por id
     obtenerArticuloById(id: number){
 
       this.serviceArticulo.getArticulo(id).subscribe((
@@ -56,6 +67,33 @@ export class ArticleComponent {
 
     }
 
+    //Buscar imagenes
+  
+     buscarImagenes(){
+
+      this.serviceImagenArticulo.getImagenesArticulo().subscribe(
+        (data:ImagenArticulo[])=>{
+
+          this.imagenes=data;
+          console.log(this.imagenes)
+         this.filtrarImagenes()
+        
+
+        }
+      )
+     }
+     //filtrarlas por el articulo
+     filtrarImagenes(){
+      for (let index = 0; index < this.imagenes.length; index++) {
+        if(this.id==this.imagenes[index].idArticuloFk.id){
+          this.urls.push(this.imagenes[index].idImagenFk.url);
+        }
+        
+
+      }
+      console.log(this.urls)
+
+     }
 
 
 }

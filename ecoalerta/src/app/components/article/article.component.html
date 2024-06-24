@@ -7,12 +7,18 @@
     </div>
   
     <!-- Texto de la noticia y imagen -->
-    <div class="row mt-4">
+    <div class="row mt-4 flex flex-wrap gap-5">
         <div class="col-md-8 order-md-1">
           <p class="lead">{{ listaArticulos.informacionArticulo }}</p>
         </div>
-        <div class="col-md-4 order-md-2">
-          <img src="{{ noticia.imagenUrl }}" alt="Imagen de la noticia" class="img-noticia">
+        <div class="col-md-4 order-md-2 flex flex-wrap gap-1">
+           @for (item of urls; track $index) {
+            <img src="{{ item }}" alt="Imagen de la noticia" class="h-4/4 w-3/4 rounded-lg">
+
+
+           }
+
+          
         </div>
     </div>
   

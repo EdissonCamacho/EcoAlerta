@@ -10,11 +10,12 @@ import { ImagenArticulo } from '../../Models/imagen-articulo';
 import { RouterOutlet } from '@angular/router';
 import { RouterLink } from '@angular/router';
 import { RouterLinkActive } from '@angular/router';
+import { SlicePipe } from '@angular/common';
 
 @Component({
   selector: 'app-pagination',
   standalone: true,
-  imports: [ReactiveFormsModule,RouterOutlet,RouterLink,RouterLinkActive],
+  imports: [ReactiveFormsModule,RouterOutlet,RouterLink,RouterLinkActive,SlicePipe],
   templateUrl: './pagination.component.html',
   styleUrl: './pagination.component.css'
 })
