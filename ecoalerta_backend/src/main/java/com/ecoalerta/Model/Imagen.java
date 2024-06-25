@@ -22,8 +22,8 @@ public class Imagen {
     @Column(name = "Descripcion", length = 50)
     private String descripcion;
 
-    @Size(max = 100)
-    @Column(name = "Url", length = 100)
+    @Size(max = 1000)
+    @Column(name = "Url", length = 1000)
     private String url;
 
 
