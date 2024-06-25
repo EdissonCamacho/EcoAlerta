@@ -28,6 +28,7 @@ public class Articulo {
     @Column(name = "Titulo_articulo")
     private String tituloArticulo;
 
+    @Size(max = 10000)
     @Column(name = "Informacion_articulo")
     private String informacionArticulo;
 
